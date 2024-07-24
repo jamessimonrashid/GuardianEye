@@ -1,0 +1,95 @@
+ScreenManager:
+    Main:
+    VideoScreen:
+    ImageScreen:
+    FileScreen:
+    LocationScreen:
+<main>:
+    name: 'main'
+    MDNavigationLayout:
+        ScreenManager:
+        
+            Screen:
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: .3
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]
+                    canvas.before:
+                        Color: 
+                            rgba: (1, 1, 1, .3)
+                        RoundedRectangle: 
+                            pos: self.pos
+                            size: self.size
+                            radius: [333, 333, 33, 33]
+                    pos_hint: {'top': 1}
+                    canvas.before:
+                        Color: 
+                            rgba: (1, .3, .3, .6)
+                        Rectangle: 
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: .2
+                        MDLabel:
+                            size_hint_x: None
+                            width: 300
+                            text: 'Name'
+                            font_size: 20
+                            canvas.before:
+                                Color: 
+                                    rgba: (1, .3, 1, .3)
+                                Rectangle: 
+                                    pos: self.pos
+                                    size: self.size
+                        MDIconButton:
+                            canvas.before:
+                                Color: 
+                                    rgba: (1, 1, 1, .3)
+                                Rectangle: 
+                                    pos: self.pos
+                                    size: self.size
+                            pos_hint: {'center_y': .7, 'center_x': .1}
+
+                            size_hint: (None, None)
+                            width: 10
+                            height: 10
+                            icon: 'menu'
+                            on_press: nav.set_state('toggle')
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: .8
+                        MDCard:
+                            orientation: 'horizontal'
+                            size_hint: (None, None)
+                            size: 70, 75
+                            pos_hint: {'center_x': 0.5,'top': 0.5}
+                            FitImage:
+                                source: ('min.jpg')
+
+        MDNavigationDrawer:
+            canvas.before:
+                Color: 
+                    rgba: (1, .3, 1, .3)
+                Rectangle: 
+                    pos: self.pos
+                    size: self.size
+            id: nav
+            ScrollView:
+                MDList:
+                    TwoLineListItem:
+                        text: 'disconnect'
+                        secondary_text: 'name'
+                        
+<VideoScreen>:
+    
+    name: 'video'
+<ImageScreen>:
+    name: 'image'
+<FileScreen>:
+    name: 'file'
+
+<LocationScreen>:
+    name: 'location'
+    

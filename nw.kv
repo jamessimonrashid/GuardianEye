@@ -1,0 +1,547 @@
+ScreenManager:
+    Main:
+    VideoScreen:
+    ImageScreen:
+    FileScreen:
+    LocationScreen:
+<Main>:
+    name: 'main'
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                canvas.before:
+                    Color: 
+                        rgba: (1, 1, .9, .8)
+                    Rectangle: 
+                        pos: self.pos
+                        size: self.size
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: .4
+                    pos_hint: {'top': 1}
+                    canvas.before:
+                        Color: 
+                            rgba: (.2, .3, .3, .98)
+                        RoundedRectangle: 
+                            radius: [0, 0, 222, 0]
+                            pos: self.pos
+                            size: self.size
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        pos_hint: {'top': 1}
+                        size_hint_y: .2
+                        MDIconButton:
+                            icon: 'menu'
+                            size_hint: (None, None)
+                            size: 20, 20
+                            pos_hint: {'center_x': .1}
+                            on_press: nav.set_state('toggle')
+                        MDLabel:
+                            text: 'Nick Name'
+                            font_size: 30
+                            size_hint_y: None
+                            height: 250
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: .8
+                        MDCard:
+                            orientation: 'vertical'
+                            size_hint: (None, None)
+                            size: 70, 80
+                            radius: [32, ]
+                            pos_hint: {'center_x': .5, 'center_y': .3}
+                            FitImage:
+                                id: target_image
+                                source: ('min.jpg')
+                                radius: [32, 32, 32, 32]
+                        MDLabel:
+                            id: target_name
+                            text: 'full name'
+                            halign: 'center'
+                            font_size: 20
+                GridLayout:
+                    
+                    cols:2
+                    size_hint_y: .6
+                    spacing: 15
+                    padding: 15
+                    canvas.before:
+                        Color: 
+                            rgba: (1, 1, .8, .1)
+                        RoundedRectangle: 
+                            radius: [222, 0,0 , 0]
+                            pos: self.pos
+                            size: self.size
+                    # 
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint: None, None
+                        size: 150, 180
+                        elevation: 1
+                        ripple_behavior: True
+                        radius: [20,]
+                        canvas.before:
+                            Color:
+                                rgba: 164/255, 168/255, 193/255, 0.8
+                            RoundedRectangle:
+                                radius: [20,]
+                                size: self.size
+                                pos: self.pos
+
+                        MDFlatButton:
+                            text: ''  # Optionally, you can set text or use an Image directly
+                            size_hint: None, None
+                            size: 150, 180
+                            on_release: app.change('image')
+
+                            Image:
+                                source: 'imgicon.png'
+                                size_hint: None, None
+                                size: 64, 64  # Adjust size as needed
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint: None, None
+                        size: 150, 180
+                        elevation: 1
+                        ripple_behavior: True
+                        radius: [20,]
+                        canvas.before:
+                            Color:
+                                rgba: 164/255, 168/255, 193/255, 0.8
+                            RoundedRectangle:
+                                radius: [20,]
+                                size: self.size
+                                pos: self.pos
+
+                        MDFlatButton:
+                            text: ''  # Optionally, you can set text or use an Image directly
+                            size_hint: None, None
+                            size: 150, 180
+                            on_release: app.change('video')
+
+                            Image:
+                                source: 'vidicon.png'
+                                size_hint: None, None
+                                size: 64, 64  # Adjust size as needed
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint: None, None
+                        size: 150, 180
+                        elevation: 1
+                        ripple_behavior: True
+                        radius: [20,]
+                        canvas.before:
+                            Color:
+                                rgba: 164/255, 168/255, 193/255, 0.8
+                            RoundedRectangle:
+                                radius: [20,]
+                                size: self.size
+                                pos: self.pos
+
+                        MDFlatButton:
+                            text: ''  # Optionally, you can set text or use an Image directly
+                            size_hint: None, None
+                            size: 150, 180
+                            on_release: app.change('location')
+
+                            Image:
+                                source: 'locicon.png'
+                                size_hint: None, None
+                                size: 64, 64  # Adjust size as needed
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    # MDCard:
+                    #     orientation: 'vertical'
+                    #     size_hint: (None, None)
+                    #     size: 150, 180
+                    #     elevation: 1
+                    #     ripple_behavior: True
+                    #     radius: [20,]
+                    #     canvas.before:
+                    #         Color:
+                    #             rgba: (164/255, 168/255, 193/255, .8)
+                    #         RoundedRectangle: 
+                    #             radius: [20, ]
+                    #             size: self.size
+                    #             pos: self.pos  
+                    #     MDFlatButton:
+                    #         size_hint: (None, None)
+                    #         size: self.parent.width, self.parent.height
+                    #         on_release: app.change('file')
+                    #         Image:
+                    #             source: 'fileicon.png' 
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint: None, None
+                        size: 150, 180
+                        elevation: 10
+                        ripple_behavior: True
+                        radius: [20,]
+                        canvas.before:
+                            Color:
+                                rgba: 164/255, 168/255, 193/255, 0.8
+                            RoundedRectangle:
+                                radius: [20,]
+                                size: self.size
+                                pos: self.pos
+
+                        MDFlatButton:
+                            text: ''  # Optionally, you can set text or use an Image directly
+                            size_hint: None, None
+                            size: 150, 180
+                            on_release: app.change('file')
+
+                            Image:
+                                source: 'fileicon.png'
+                                size_hint: None, None
+                                size: 64, 64  # Adjust size as needed
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center the image within MDFlatButton
+        MDNavigationDrawer:
+            id: nav
+            MDBoxLayout:
+                orientation: 'vertical'
+                
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: .09
+                    pos_hint: {'center_y': 1}
+                    MDIconButton:
+                        icon: 'menu'
+                    MDIconButton:
+                        icon: 'account-plus'
+                        on_press: app.change('add_account')
+                
+                    
+
+                MDBoxLayout:
+                    size_hint_y: .6
+                    orientation: 'vertical'
+                    ScrollView:
+                        MDList:
+                            TwoLineAvatarListItem:
+                                text: 'User name'
+                                secondary_text: 'connect'
+                                ImageLeftWidget:
+                                    source: ('min.jpg') 
+                                    radius: [22,22,22,22]       
+                                
+                            
+<VideoScreen>:      
+    name: 'video'
+    MDBoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: [.2, .3, .3, .98]
+            RoundedRectangle: 
+                pos: self.pos
+                size: self.size
+                radius: [0, 0, 0, 0]
+        MDIconButton:
+            icon: 'home'
+            size_hint: (None, None)
+            size: 20, 20
+            on_press: app.change('main')
+            md_bg_color: (.2, .3, .3, .98)
+        MDCard:
+            orientation: 'vertical'
+            id: target_photo
+            canvas.before:
+                Color:
+                    rgba: [.2, .3, .3, .98]
+                RoundedRectangle: 
+                    pos: self.pos
+                    size: self.size
+                    radius: [0, 0, 222, 0]
+            MDCard:
+                elevation: 10
+                size_hint: (None, None)
+                size: 70, 80
+                radius: [22,]
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                FitImage:
+                    source: ('min.jpg')
+                    radius: [22,22,22,22]
+            MDLabel:
+                size_hint: (.6,.6)
+                pos_hint: {'center_x': .5, 'center_y': 0.4}
+                text: 'userName'
+                halign: 'center'
+                #valign: 'center'
+        MDCard:
+            id: target_photo
+            canvas.before:
+                Color: 
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle: 
+                    radius: [22, 22,0 , 0]
+                    pos: self.pos
+                    size: self.size
+            MDLabel:
+                text: 'connected with target \ndevice'
+                font_size: 20
+                pos_hint: {'center_x': 0.4,'center_y': .8}
+            Image:
+                source: ('link.png')
+                size_hint: (.4, .3)
+                pos_hint: {'center_x': .1, 'center_y': .3 }
+
+       
+        MDCard:
+            id: target_photo
+            orientation: 'vertical'
+            spacing: 5
+            canvas.before:
+                Color: 
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle: 
+                    radius: [0, 0,0 , 0]
+                    pos: self.pos
+                    size: self.size
+
+            MDLabel:
+                text: 'screen record'
+                font_size: 20
+                halign: 'center'
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'center_x': .7, 'center_y': .6}
+                spacing: 50
+
+                MDRoundFlatButton:
+                    text: 'record'
+                    font_size: 15
+                    pos_hint: {'center_x': 1, 'center_y': .6}
+                    radius: [35, ]
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]
+
+                MDRoundFlatButton:
+                    text: 'open file'
+                    font_size: 15
+                    pos_hint: {'center_x': .1, 'center_y': .6}
+
+                
+
+             
+
+        MDCard:
+            id: target_photo
+            orientation: 'vertical'
+            canvas.before:
+                Color: 
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle: 
+                    radius: [0, 0,0 , 0]
+                    pos: self.pos
+                    size: self.size
+                                
+            MDLabel:
+                text: 'camera record'
+                font_size: 20
+                halign: 'center'
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'center_x': .7, 'center_y': .6}
+                spacing: 50
+
+                MDRoundFlatButton:
+                    text: 'record'
+                    font_size: 15
+                    pos_hint: {'center_x': 1, 'center_y': .6}
+                    radius: [35, ]
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]
+
+                MDRoundFlatButton:
+                    text: 'open file'
+                    font_size: 15
+                    pos_hint: {'center_x': .1, 'center_y': .6}
+                
+<ImageScreen>:
+    name: 'image'
+    MDBoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: [.2, .3, .3, .98]
+            RoundedRectangle: 
+                pos: self.pos
+                size: self.size
+                radius: [0, 0, 0, 0]
+        MDIconButton:
+            icon: 'home'
+            size_hint: (None, None)
+            size: 20, 20
+            on_press: app.change('main')
+            md_bg_color: (.2, .3, .3, .98)
+        MDCard:
+            orientation: 'vertical'
+            id: target_photo
+            canvas.before:
+                Color:
+                    rgba: [.2, .3, .3, .98]
+                RoundedRectangle: 
+                    pos: self.pos
+                    size: self.size
+                    radius: [0, 0, 222, 0]
+            MDCard:
+                elevation: 10
+                size_hint: (None, None)
+                size: 70, 80
+                radius: [22,]
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                FitImage:
+                    source: ('min.jpg')
+                    radius: [22,22,22,22]
+            MDLabel:
+                size_hint: (.6,.6)
+                pos_hint: {'center_x': .5, 'center_y': 0.4}
+                text: 'userName'
+                halign: 'center'
+                #valign: 'center'
+        MDCard:
+            id: target_photo
+            canvas.before:
+                Color: 
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle: 
+                    radius: [22, 22,0 , 0]
+                    pos: self.pos
+                    size: self.size
+            MDLabel:
+                text: 'connected with target \ndevice'
+                font_size: 20
+                pos_hint: {'center_x': 0.4,'center_y': .8}
+            Image:
+                source: ('link.png')
+                size_hint: (.4, .3)
+                pos_hint: {'center_x': .1, 'center_y': .3 }
+
+       
+        MDCard:
+            orientation: 'vertical'
+            spacing: 5
+            canvas.before:
+                Color: 
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle: 
+                    radius: [0, 0,0 , 0]
+                    pos: self.pos
+                    size: self.size
+
+            MDLabel:
+                text: 'screen shot'
+                font_size: 20
+                halign: 'center'
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'center_x': .7, 'center_y': .6}
+                spacing: 50
+
+                MDRoundFlatButton:
+                    text: 'screen shot'
+                    font_size: 15
+                    pos_hint: {'center_x': 1, 'center_y': .6}
+                    radius: [35, ]
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]
+
+                MDRoundFlatButton:
+                    text: 'open file'
+                    font_size: 15
+                    pos_hint: {'center_x': .1, 'center_y': .6}
+
+                
+
+             
+
+        MDCard:
+            orientation: 'vertical'
+            canvas.before:
+                Color: 
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle: 
+                    radius: [0, 0,0 , 0]
+                    pos: self.pos
+                    size: self.size
+                                
+            MDLabel:
+                text: 'camera shot'
+                font_size: 20
+                halign: 'center'
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'center_x': .7, 'center_y': .6}
+                spacing: 50
+
+                MDRoundFlatButton:
+                    text: 'camera'
+                    font_size: 15
+                    pos_hint: {'center_x': 1, 'center_y': .6}
+                    radius: [35, ]
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]
+
+                MDRoundFlatButton:
+                    text: 'open file'
+                    font_size: 15
+                    pos_hint: {'center_x': .1, 'center_y': .6}
+
+<FileScreen>:
+    
+    
+    name: 'file'
+    MDBoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: [.2, .3, .3, .98]
+            RoundedRectangle: 
+                pos: self.pos
+                size: self.size
+                radius: [0, 0, 0, 0]
+        MDIconButton:
+            icon: 'home'
+            size_hint: (None, None)
+            size: 20, 20
+            on_press: app.change('main')
+            md_bg_color: (.2, .3, .3, .98)
+        MDCard:
+            orientation: 'vertical'
+            size_hint_y: 0.1
+            canvas.before:
+                
+                Color:
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle:
+                    radius: [22,22,22,22]
+                    size: self.size
+                    pos: self.pos
+            TwoLineListItem:
+                
+                text: 'files'
+                secondary_text: 'including videos and images'
+                font_size: 20
+                pos_hint: {'center_x': .5 }
+        MDCard:
+            size_hint_y: 0.6
+            canvas.before:
+                Color:
+                    rgba: (1, 1, .8, .1)
+                RoundedRectangle:
+                    radius: [22,22,22,22]
+                    size: self.size
+                    pos: self.pos 
+                
+
+
+
+
+<AddAccountScreen>:
+    name: 'account'
