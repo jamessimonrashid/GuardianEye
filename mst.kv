@@ -1,0 +1,42 @@
+<MainScreen>:
+    name: 'main'
+    
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                name: 'main_screen'
+                
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: 'Main Screen'
+                        elevation: 10
+
+                    MDFillRoundFlatButton:
+                        text: 'Press'
+                        on_press: app.root.current = 'video'
+            
+            Screen:
+                name: 'video'
+                
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: 'Video Screen'
+                        elevation: 10
+
+                    MDFillRoundFlatButton:
+                        text: 'Back to Main'
+                        on_press: app.root.current = 'main'
+                        
+        MDNavigationDrawer:
+            MDList:
+                OneLineListItem:
+                    text: 'Item 1'
+                    on_press: app.root.current = 'main'
+                
+                OneLineListItem:
+                    text: 'Item 2'
+                    on_press: app.root.current = 'video'

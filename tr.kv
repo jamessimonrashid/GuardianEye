@@ -1,0 +1,195 @@
+#: import Factory kivy.factory.Factory
+<mypopup@Popup>:
+    title: 'time(min)'
+    size_hint: (.4, .34)
+    auto_dismiss: True
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        MDFlatButton:
+            text: 'min 5'
+            canvas.before:
+                Color:
+                    rgba: (.2, .23, .2,1)
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [22, 22, 22, 22]
+            on_press: app.root.close()
+        MDFlatButton:
+            text: 'min 10'
+            canvas.before:
+                Color:
+                    rgba: (.2, .23, .2,1)
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [22, 22, 22, 22]
+        MDFlatButton:
+            
+            text: 'min 15'
+            canvas.before:
+                Color:
+                    rgba: (.2, .23, .2,1)
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [22, 22, 22, 22]
+        MDFlatButton:
+            text: 'min 20'
+            canvas.before:
+                Color:
+                    rgba: (.2, .23, .2,1)
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [22, 22, 22, 22]
+<MainScreen>:
+    name: 'main'
+    Screen:
+        name: 'main'
+        MDToolbar:
+            title: "Th3 Gurdian 3y3"
+            valign: 'top'
+            size_hint_y: .1
+            pos_hint: {'y': .9}
+
+            
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .8
+            spacing: 10
+            padding: 10
+            MDCard:
+                size_hint: (.4, .4)
+                MDFillRoundFlatButton:
+                    
+                    id: move_video
+                    text: "Command"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: root.current = 'command'
+            MDCard:
+                MDFillRoundFlatButton:
+                    
+                    id: move_video
+                    text: "Image"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: root.current = 'image'
+            MDCard:
+                MDFillRoundFlatButton:
+                    
+                    id: move_video
+                    text: "Video"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: root.current = 'video'
+            
+            
+            
+    Screen:
+        name: 'image'
+        MDBoxLayout:
+            spacing: 10
+            padding: 10
+            orientation: 'vertical'
+            MDCard:
+                pos_hint: {'center_y': .9}
+                orientation: 'horizontal'
+                size_hint_y: .1
+                MDToolbar:
+                    title: "Th3 Gurdian 3y3"
+                    
+                    MDIconButton:
+                        
+                        icon: 'alpha-r-box'
+                        on_press: root.current = 'main'
+            MDCard:
+                size_hint_y: .2
+                orientation: 'horizontal'
+                MDRoundFlatButton:
+                    text: 'screen image'
+                    on_press: 
+                        app.root.image('screen')
+                MDRoundFlatButton:
+                    
+                    text: 'Camera image'
+                    on_press: 
+                        app.root.image('camera')
+            MDCard:
+                size_hint_y: .6
+    Screen:
+        name: 'video'
+            
+        MDBoxLayout:
+            spacing: 10
+            padding: 10
+            orientation: 'vertical'
+            MDCard:
+                pos_hint: {'center_y': .9}
+                orientation: 'horizontal'
+                size_hint_y: .1
+                MDToolbar:
+                    title: "Th3 Gurdian 3y3"
+                    
+                    MDIconButton:
+                        
+                        icon: 'alpha-r-box'
+                        on_press: root.current = 'main'
+            MDCard:
+                size_hint_y: .2
+                orientation: 'horizontal'
+                MDRoundFlatButton:
+                    text: 'screen video'
+                    on_press: 
+                        Factory.mypopup().open()
+                        app.root.video('screen')
+                MDRoundFlatButton:
+                    
+                    text: 'Camera video'
+                    on_press: 
+                        Factory.mypopup().open()
+                        app.root.video('camera')
+            MDCard:
+                size_hint_y: .6
+            
+    Screen:
+        name: 'command'
+        MDBoxLayout:
+            spacing: 10
+            padding: 10
+            orientation: 'vertical'
+            MDCard:
+                pos_hint: {'center_y': .9}
+                orientation: 'horizontal'
+                size_hint_y: .1
+                MDToolbar:
+                    title: "Th3 Gurdian 3y3"
+                    
+                    MDIconButton:
+                        
+                        icon: 'alpha-r-box'
+                        on_press: root.current = 'main'
+            MDCard: 
+                size_hint_y: .2
+                orientation: 'vertical'
+                MDTextFieldRect:
+                    id: command
+                    hint_text: "Enter Command"
+                MDBoxLayout:
+                    spacing: 40
+                    orientation: 'horizontal'
+                    MDRoundFlatButton:
+                        text: 'Enter'
+                        on_press: app.root.command()
+                    MDRoundFlatButton:
+                        text: 'clear'
+                        on_press: app.root.clear_command()
+            MDCard:
+                size_hint_y: .4
+                MDLabel:
+                    pos_hint: {'center_x': .7, 'center_y': .9 }
+                    text: '.........result...........'
+            MDCard:
+                size_hint_y: .2
+                MDLabel:
+                    text: 'STATUS:::'
+                    
